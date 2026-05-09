@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  kangaroo:
+    image: kangaroo-puzzle:latest
+    build: .
+    runtime: nvidia
+    environment:
+      # ── إعدادات اللغز ──────────────────────────────────────
+      - PUZZLE=66
+      - PUBKEY=02145d2611c823a396ef6712ce0f712f09b9b4f3135e3e0aa3230fb9b6d08d1e16
+      - RANGE_START=20000000000000000
+      - RANGE_END=3ffffffffffffffff
+      - DP=16
+      - WORKERS=4
+
+      # ── إعدادات تليغرام ────────────────────────────────────
+      - TG_TOKEN=YOUR_BOT_TOKEN_HERE
+      - TG_CHAT_ID=YOUR_CHAT_ID_HERE
+
+    volumes:
+      - ./results:/workspace/results
+      - ./logs:/workspace/logs
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    restart: unless-stopped
