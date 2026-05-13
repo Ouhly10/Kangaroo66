@@ -41,4 +41,4 @@ WORKDIR /workspace
 RUN mkdir -p /workspace/results /workspace/logs
 
 # — Entrypoint ————————————————————————
-CMD ["/bin/bash"]
+CMD ["/bin/bash", "-c", "tail -f /dev/null"]
