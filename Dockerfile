@@ -2,7 +2,7 @@
 # Kangaroo - Pollard's Kangaroo ECDLP Solver
 # Bitcoin Puzzle Hunter - Docker Image
 # ============================================================
-FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.1-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
